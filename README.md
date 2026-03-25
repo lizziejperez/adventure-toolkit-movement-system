@@ -1,6 +1,8 @@
 # Adventure Toolkit: Top-Down Movement System (Unity C#)
 
-A simple and beginner-friendly movement system inspired by classic adventure games.
+A clean, beginner-friendly top-down movement system built in Unity using C#.
+
+Inspired by classic adventure games, this system is designed to be easy to understand, modify, and integrate into your own projects.
 
 ## Features
 
@@ -19,8 +21,6 @@ Perfect for:
 
 Use this as a foundation for your own projects.
 
-Need help customizing this? I offer support on [Fiverr](https://www.fiverr.com/lizziejperez).
-
 ## Controls
 
 * W / A / S / D — Move
@@ -30,19 +30,37 @@ Need help customizing this? I offer support on [Fiverr](https://www.fiverr.com/l
 
 ## How to Use
 
-1. Import the folder into your Unity project
-2. Add the `Player` prefab to your scene
-3. Adjust movement speed in the Inspector
-4. Press Play
+1. Open the project in Unity (tested with Unity 6 LTS)
+2. Open the demo scene:
+   Assets/AdventureToolkit/Movement/Scenes/DemoScene
+3. Press Play to test movement
+4. Adjust movement speed in the Player Inspector
 
 ## Project Structure
 
 ```
 Assets/AdventureToolkit/Movement/
+  ├── Scripts/
+  ├── Prefabs/
+  └── Scenes/
 ```
+
+## Technical Notes
+
+- Uses Unity’s classic input system (Input.GetAxisRaw)
+- Requires Active Input Handling set to “Both” in Project Settings
+- Uses Rigidbody2D for physics-based movement
+- Implements 4-direction movement (no diagonal movement)
 
 ## Future Improvements
 
 * Diagonal movement support
 * Animation integration
 * Expanded input options
+
+---
+
+### Need help customizing this?
+
+I offer support on Fiverr: 
+[https://www.fiverr.com/lizziejperez](https://www.fiverr.com/lizziejperez)
