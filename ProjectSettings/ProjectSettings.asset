@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: lizziejperez
   productName: adventure-toolkit-movement-system
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -681,7 +681,7 @@ PlayerSettings:
   qnxGraphicConfPath: 
   apiCompatibilityLevel: 6
   captureStartupLogs: {}
-  activeInputHandler: 1
+  activeInputHandler: 2
   windowsGamepadBackendHint: 0
   cloudProjectId: 7ce563a7-11dd-4fdf-b465-b75fd3b83108
   framebufferDepthMemorylessMode: 0
