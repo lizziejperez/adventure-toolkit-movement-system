@@ -19,7 +19,7 @@ Perfect for:
 
 Use this as a foundation for your own projects.
 
-Need help customizing this? I offer support on [Fiverr](https://www.fiverr.com/s/2KRokwV).
+Need help customizing this? I offer support on [Fiverr](https://www.fiverr.com/lizziejperez).
 
 ## Controls
 
