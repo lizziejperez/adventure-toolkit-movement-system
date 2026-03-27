@@ -180,3 +180,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   moveSpeed: 5
+  useNewInputSystem: 0
+  moveAction: {fileID: -4928673015694985151, guid: 813152df9f777dd4f934470a3be10833, type: 3}
