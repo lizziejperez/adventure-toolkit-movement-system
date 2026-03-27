@@ -22,10 +22,10 @@ public class PlayerMovement : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
-        // Force 4-direction movement by prioritizing horizontal input first.
-        if (horizontal != 0f)
+        // Force 4-direction movement by prioritizing vertical input first.
+        if (vertical != 0f)
         {
-            vertical = 0f;
+            horizontal = 0f;
         }
 
         // Apply Movement
