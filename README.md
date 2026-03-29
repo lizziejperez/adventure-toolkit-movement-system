@@ -4,6 +4,8 @@ A reusable, adventure game–inspired 2D movement system with support for both U
 
 Built in Unity with C#, this beginner-friendly system provides clean, responsive 4-direction movement and a ready-to-use demo for quick setup and testing.
 
+Includes a ready-to-use demo environment with pixel art assets and prefabs for quick setup and testing.
+
 ## Features
 
 * 4-directional movement (up, down, left, right)
@@ -12,6 +14,8 @@ Built in Unity with C#, this beginner-friendly system provides clean, responsive
 * Simple, readable C# implementation
 * Ready-to-use demo scene for testing and integration
 * Supports both Unity Input Manager and the new Input System (toggleable)
+* Includes demo pixel art assets (player, trees, rocks, bushes)
+* Environment prefabs for rapid scene building
 
 ## Who It’s For
 
@@ -52,10 +56,12 @@ If not configured, the system will fall back to the legacy input system.
 ## Project Structure
 
 ```
-Assets/AdventureToolkit/Movement/
-  ├── Scripts/
-  ├── Prefabs/
-  └── Scenes/
+Assets/AdventureToolkit/
+  ├── Movement/
+  |    ├── Scripts/
+  |    ├── Prefabs/
+  |    └── Scenes/
+  └── Art/ ← Demo 16x16 pixel assets (player, environment)
 ```
 
 ## Movement Flow
