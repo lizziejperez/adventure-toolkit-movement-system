@@ -1,3 +1,22 @@
+/*
+ * PlayerMovement.cs
+ * Adventure Toolkit - Top-Down Movement System
+ * Version: 1.0
+ *
+ * Author: Lizzie Perez
+ * Description:
+ * Handles 4-directional top-down movement using Rigidbody2D.
+ * Designed for beginner-friendly projects and reusable systems.
+ *
+ * Compatibility:
+ * - Unity Input Manager (legacy)
+ * - Active Input Handling: Both
+ *
+ * Note:
+ * Uses Input.GetAxisRaw(). Projects using the new Input System only
+ * must enable "Both" in Player Settings or use a new input implementation.
+ */
+
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
     using UnityEngine.InputSystem;
