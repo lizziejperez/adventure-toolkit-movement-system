@@ -1,14 +1,18 @@
 # Adventure Toolkit: Top-Down Movement System (Unity C#)
 
-A reusable, adventure game–inspired 2D movement system with support for both Unity input systems — designed for clarity, flexibility, and easy integration.
-
-Built in Unity with C#, this beginner-friendly system provides clean, responsive 4-direction movement and a ready-to-use demo for quick setup and testing.
-
-Includes a ready-to-use demo environment with pixel art assets and prefabs for quick setup and testing.
+**Current Version:** v1.1
 
 Demo Video: [https://youtu.be/QXQprQBhzHk](https://youtu.be/QXQprQBhzHk)
 
+A reusable, adventure game–inspired 2D top-down movement system with support for both Unity input systems — designed for clarity, flexibility, and easy integration.
+
+Built in Unity with C#, this beginner-friendly system provides clean, responsive 4-direction movement with vertical input priority for precise control.
+
+Includes a ready-to-use demo environment with 16x16 pixel art assets and prefabs for quick prototyping and testing.
+
 ## Features
+
+### v1.0
 
 * 4-directional movement (up, down, left, right)
 * Smooth and responsive controls
@@ -16,7 +20,10 @@ Demo Video: [https://youtu.be/QXQprQBhzHk](https://youtu.be/QXQprQBhzHk)
 * Simple, readable C# implementation
 * Ready-to-use demo scene for testing and integration
 * Supports both Unity Input Manager and the new Input System (toggleable in Inspector)
-* Includes demo pixel art assets (player, trees, rocks, bushes)
+
+### v1.1
+
+* Includes 16x16 pixel demo assets (player, trees, rocks, bushes)
 * Environment prefabs for rapid scene building
 
 ## Who It’s For
