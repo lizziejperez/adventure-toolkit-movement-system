@@ -6,6 +6,8 @@ Built in Unity with C#, this beginner-friendly system provides clean, responsive
 
 Includes a ready-to-use demo environment with pixel art assets and prefabs for quick setup and testing.
 
+Demo Video: [https://youtu.be/QXQprQBhzHk](https://youtu.be/QXQprQBhzHk)
+
 ## Features
 
 * 4-directional movement (up, down, left, right)
@@ -13,7 +15,7 @@ Includes a ready-to-use demo environment with pixel art assets and prefabs for q
 * Adjustable movement speed via Inspector
 * Simple, readable C# implementation
 * Ready-to-use demo scene for testing and integration
-* Supports both Unity Input Manager and the new Input System (toggleable)
+* Supports both Unity Input Manager and the new Input System (toggleable in Inspector)
 * Includes demo pixel art assets (player, trees, rocks, bushes)
 * Environment prefabs for rapid scene building
 
@@ -30,8 +32,6 @@ Use this as a foundation for your own projects.
 
 * W / A / S / D — Move
 * Arrow Keys — Move
-
-<!-- ## Preview -->
 
 ## How to Use
 
@@ -58,7 +58,9 @@ If not configured, the system will fall back to the legacy input system.
 ```
 Assets/AdventureToolkit/
   ├── Movement/
-  |    ├── Scripts/
+  |    ├── Prefabs/
+  |    └── Scripts/
+  ├── Demo/
   |    ├── Prefabs/
   |    └── Scenes/
   └── Art/ ← Demo 16x16 pixel assets (player, environment)
