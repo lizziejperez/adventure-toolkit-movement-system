@@ -1,6 +1,6 @@
 /*
  * PlayerMovement.cs
- * Adventure Toolkit - Top-Down Movement System
+ * Gridventure Toolkit - Top-Down Movement System
  * Version: 1.0
  *
  * Author: Lizzie Perez

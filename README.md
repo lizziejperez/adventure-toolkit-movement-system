@@ -1,4 +1,4 @@
-# Adventure Toolkit: Top-Down Movement System (Unity C#)
+# Gridventure Toolkit: Top-Down Movement System (Unity C#)
 
 **Current Version:** v1.1
 
@@ -43,7 +43,7 @@ Use this as a foundation for your own projects.
 ## How to Use
 
 1. Open the project in Unity (tested with Unity 6 LTS)
-2. Open the demo scene: `Assets/AdventureToolkit/Movement/Scenes/DemoScene`
+2. Open the demo scene: `Assets/GridventureToolkit/Movement/Scenes/DemoScene`
 3. Press Play to test movement
 4. Adjust movement speed in the Player Inspector
 
@@ -63,7 +63,7 @@ If not configured, the system will fall back to the legacy input system.
 ## Project Structure
 
 ```
-Assets/AdventureToolkit/
+Assets/GridventureToolkit/
   ├── Movement/
   |    ├── Prefabs/
   |    └── Scripts/
