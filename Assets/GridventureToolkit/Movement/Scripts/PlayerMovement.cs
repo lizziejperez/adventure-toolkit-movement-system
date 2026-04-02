@@ -4,17 +4,6 @@
  * Version: 1.0
  *
  * Author: Lizzie Perez
- * Description:
- * Handles 4-directional top-down movement using Rigidbody2D.
- * Designed for beginner-friendly projects and reusable systems.
- *
- * Compatibility:
- * - Unity Input Manager (legacy)
- * - Active Input Handling: Both
- *
- * Note:
- * Uses Input.GetAxisRaw(). Projects using the new Input System only
- * must enable "Both" in Player Settings or use a new input implementation.
  */
 
 using UnityEngine;
@@ -22,6 +11,17 @@ using UnityEngine;
     using UnityEngine.InputSystem;
 #endif
 
+/// <summary>
+/// Handles 4-directional top-down movement using Rigidbody2D.
+/// Designed for beginner-friendly projects and reusable systems.
+/// 
+/// Compatibility:
+/// - Unity Input Manager (legacy)
+/// - Unity Input System (new)
+/// </summary>
+/// <remarks>
+/// Uses Input.GetAxisRaw(). Projects using the new Input System only must enable "Both" in Player Settings or use a new input implementation.
+/// </remarks>
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
