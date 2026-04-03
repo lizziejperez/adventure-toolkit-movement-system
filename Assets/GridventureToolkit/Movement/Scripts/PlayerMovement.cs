@@ -1,139 +1,114 @@
 /*
  * PlayerMovement.cs
- * Gridventure Toolkit - Top-Down Movement System
- * Version: 1.0
- *
+ * Gridventure Toolkit - 2D Movement System (Top-Down)
  * Author: Lizzie Perez
+ * Version: 2.0
  */
-
 using UnityEngine;
-#if ENABLE_INPUT_SYSTEM
-    using UnityEngine.InputSystem;
-#endif
+using UnityEngine.InputSystem;
 
 /// <summary>
-/// Handles 4-directional top-down movement using Rigidbody2D.
+/// Handles top-down 2D movement using Unity's New Input System.
+/// Supports 4-direction movement by default with optional diagonal movement.
+/// Applies velocity through Rigidbody2D for physics-based movement.
 /// Designed for beginner-friendly projects and reusable systems.
-/// 
-/// Compatibility:
-/// - Unity Input Manager (legacy)
-/// - Unity Input System (new)
 /// </summary>
 /// <remarks>
-/// Uses Input.GetAxisRaw(). Projects using the new Input System only must enable "Both" in Player Settings or use a new input implementation.
+/// Requires a Rigidbody2D and PlayerInput component.
+/// Expects a "Move" action (Vector2) in the assigned Input Actions asset.
 /// </remarks>
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(PlayerInput))]
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float speed = 6.0f;
+    [SerializeField] private bool allowDiagonalMovement = false;
 
-
-    [Header("Input Mode")]
-        [SerializeField] private bool useNewInputSystem = false;
-
-    #if ENABLE_INPUT_SYSTEM
-        [Header("New Input System")]
-        [SerializeField] private InputActionReference moveAction;
-    #endif
+    [Header("Debug Settings")]
+    [SerializeField] private bool inDebugMode = false;
 
     private Rigidbody2D rb;
-    private Vector2 movementInput;
+    private PlayerInput playerInput;
+    private InputAction moveAction;
+    private Vector2 moveInput;
+
+    // Initialization
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerInput = GetComponent<PlayerInput>();
+        moveAction = playerInput.actions["Move"];
     }
 
     private void OnEnable()
     {
-        #if ENABLE_INPUT_SYSTEM
-            // Enable the assigned input action when this component is active.
-            if (useNewInputSystem && moveAction != null)
-            {
-                moveAction.action.Enable();
-            }
-        #endif
+        moveAction.started += OnMoveStarted;
+        moveAction.performed += OnMovePerformed;
+        moveAction.canceled += OnMoveCanceled;
     }
 
-    private void OnDisable()
+    // Helper methods for Player Input
+
+    private void OnMoveStarted(InputAction.CallbackContext callbackContext)
     {
-        #if ENABLE_INPUT_SYSTEM
-            // Disable the assigned input action when this component is inactive.
-            if (useNewInputSystem && moveAction != null)
-            {
-                moveAction.action.Disable();
-            }
-        #endif
+        moveInput = callbackContext.ReadValue<Vector2>();
+
+        if (inDebugMode)
+        {
+            Debug.Log("OnMoveStarted called!\nMove Input: " + moveInput);
+        }        
     }
 
-    private void Update()
+    private void OnMovePerformed(InputAction.CallbackContext callbackContext) 
     {
-        // Get Movement Input
-        if (useNewInputSystem)
-        {
-            ReadNewInput();
-        }
-        else
-        {
-            ReadLegacyInput();
-        }
+        moveInput = callbackContext.ReadValue<Vector2>();
 
-        // Force 4-direction movement.
-        // Horizontal is used only when it is stronger than vertical input.
-        movementInput = ForceFourDirection(movementInput);
+        if (inDebugMode)
+        {
+            Debug.Log("OnMovePerformed called!\nCallback Context: " + moveInput);
+        }
     }
 
+    private void OnMoveCanceled(InputAction.CallbackContext callbackContext)
+    {
+        moveInput = callbackContext.ReadValue<Vector2>();
+
+        if (inDebugMode)
+        {
+            Debug.Log("OnMoveCanceled called!\nCallback Context: " + moveInput);
+        }
+    }
+
+    // Used for Physics handling
     private void FixedUpdate()
     {
-        // Apply Physics Update
-        // Uses Unity 6+ physics API (linearVelocity).
-        // If using older Unity versions, replace with: rb.velocity = movementInput * moveSpeed;
-        rb.linearVelocity = movementInput * moveSpeed;
-    }
+        Vector2 direction = moveInput;
 
-    private void ReadLegacyInput()
-    {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-
-        movementInput = new Vector2(horizontal, vertical).normalized;
-    }
-
-    private void ReadNewInput()
-    {
-        #if ENABLE_INPUT_SYSTEM
-            // If no input action is assigned, stop movement safely.
-            if (moveAction == null)
+        if (!allowDiagonalMovement)
+        {
+            // Fix direction for 4-direction movement
+            float x = Mathf.Abs(direction.x);
+            float y = Mathf.Abs(direction.y);
+            if (x > y)
             {
-                movementInput = Vector2.zero;
-                return;
+                direction.y = 0f;
             }
+            else
+            {
+                direction.x = 0f;
+            }
+        }        
 
-            movementInput = moveAction.action.ReadValue<Vector2>().normalized;
-        #else
-            // If the new Input System is not available, stop movement safely.
-            movementInput = Vector2.zero;
-        #endif
+        // Apply movement using Rigidbody2D linear velocity     
+        rb.linearVelocity = speed * direction;
     }
 
-    private Vector2 ForceFourDirection(Vector2 input)
+    // Decommisioning
+    private void OnDisable()
     {
-        // Compare horizontal and vertical input strength.
-        // If horizontal input is stronger, move only on the X axis.
-        if (Mathf.Abs(input.x) > Mathf.Abs(input.y))
-        {
-            return new Vector2(Mathf.Sign(input.x), 0f);
-        }
-
-        // If there is any vertical input, prioritize vertical movement.
-        if (Mathf.Abs(input.y) > 0f)
-        {
-            return new Vector2(0f, Mathf.Sign(input.y));
-        }
-
-        // No input detected.
-        return Vector2.zero;
+        moveAction.started -= OnMoveStarted;
+        moveAction.performed -= OnMovePerformed;
+        moveAction.canceled -= OnMoveCanceled;
     }
-
 }

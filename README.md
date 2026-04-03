@@ -1,28 +1,24 @@
 # Gridventure Toolkit: Top-Down Movement System (Unity C#)
 
-**Current Version:** v1.1
+**Current Version:** v2.0
 
-Demo Video: [https://youtu.be/QXQprQBhzHk](https://youtu.be/QXQprQBhzHk)
-
-A reusable, adventure game–inspired 2D top-down movement system with support for both Unity input systems — designed for clarity, flexibility, and easy integration.
-
-Built in Unity with C#, this beginner-friendly system provides clean, responsive 4-direction movement with vertical input priority for precise control.
-
+A reusable, adventure game–inspired 2D top-down movement system built with Unity’s **New Input System**, designed for clarity, flexibility, and easy integration.
+Built in Unity with C#, this beginner-friendly system provides clean, responsive 4-direction movement with vertical input priority for precise control, with optional diagonal movement support.
 Includes a ready-to-use demo environment with 16x16 pixel art assets and prefabs for quick prototyping and testing.
 
 ## Features
 
-### v1.0
+### v2.0
 
 * 4-directional movement (up, down, left, right)
+* Optional diagonal movement (toggle in Inspector)
 * Smooth and responsive controls
 * Adjustable movement speed via Inspector
+* Built with Unity’s New Input System
+* Supports keyboard and controller input through a `Move` action
+* Uses `Rigidbody2D` physics with velocity applied in `FixedUpdate`
 * Simple, readable C# implementation
 * Ready-to-use demo scene for testing and integration
-* Supports both Unity Input Manager and the new Input System (toggleable in Inspector)
-
-### v1.1
-
 * Includes 16x16 pixel demo assets (player, trees, rocks, bushes)
 * Environment prefabs for rapid scene building
 
@@ -39,26 +35,30 @@ Use this as a foundation for your own projects.
 
 * W / A / S / D — Move
 * Arrow Keys — Move
+* Gamepad Left Stick — Move
 
 ## How to Use
 
 1. Open the project in Unity (tested with Unity 6 LTS)
 2. Open the demo scene: `Assets/GridventureToolkit/Movement/Scenes/DemoScene`
-3. Press Play to test movement
-4. Adjust movement speed in the Player Inspector
+3. Select the player object
+4. Ensure these components are attached:
+    * `Rigidbody2D`
+    * `PlayerInput`
+    * `PlayerMovement`
+5. In the `PlayerInput` component:
+    * Assign the correct Input Actions asset
+    * Set the Default Map to `Player`
+6. Ensure the Input Actions asset contains a `Move` action of type `Value` with control type `Vector2`
+7. Press Play to test movement
+8. Adjust movement speed in the Player Inspector
+9. Toggle Allow Diagonal Movement in the PlayerMovement component if desired
 
-### Input System Setup (Optional)
+## Input System Reference
 
-This project supports both Unity's legacy Input Manager and the new Input System.
+This project uses Unity’s **New Input System**.
 
-To use the new Input System:
-
-1. Ensure "Active Input Handling" is set to **Both** in: `Edit → Project Settings → Player`
-2. Open the Player prefab
-3. Enable **Use New Input System** in the PlayerMovement script
-4. Ensure the **Move Action** is assigned (default provided in prefab)
-
-If not configured, the system will fall back to the legacy input system.
+For information see the official documentation here: [https://docs.unity3d.com/Packages/com.unity.inputsystem@1.6/manual/index.html](https://docs.unity3d.com/Packages/com.unity.inputsystem@1.6/manual/index.html)
 
 ## Project Structure
 
@@ -77,39 +77,49 @@ Assets/GridventureToolkit/
 
 ```
 Input Source
-(WASD / Arrow Keys / Input Actions)
+(WASD / Arrow Keys / Gamepad Left Stick)
 ↓
-Input Handling
-(Legacy Input Manager or New Input System)
+Input Actions Asset
+(Player map → Move action)
+↓
+PlayerInput
+(Invoke C# Events)
 ↓
 Direction Processing
 (Force 4-direction, no diagonal movement)
 ↓
 Physics Application
-(Rigidbody2D velocity in FixedUpdate)
+(Rigidbody2D linear velocity in FixedUpdate)
 ```
 
 ## Technical Notes
 
-- Requires Active Input Handling set to “Both” in Project Settings
-- Uses Rigidbody2D for physics-based movement
-- Implements 4-direction movement (no diagonal movement)
-- Uses conditional compilation to support multiple input systems
+* Requires `Rigidbody2D` and `PlayerInput`
+* Uses Unity’s New Input System
+* Uses `PlayerInput` with C# event callbacks
+* Uses `Rigidbody2D` for physics-based movement
+* Implements 4-direction movement with no diagonal movement
+* Vertical movement is prioritized when horizontal and vertical input weights are equal
 
 
 ## What This System Demonstrates
 
 * Clean separation of input and movement logic
-* Support for multiple Unity input systems
+* Unity New Input System workflow using `PlayerInput`
 * 4-direction movement (classic top-down style)
 * Reusable prefab-based design
 * Beginner-friendly and extensible architecture
 
 ## Future Improvements
 
-* Diagonal movement support
 * Animation integration
+* Facing direction output for animation systems
+* Interaction system integration
 * Expanded input options
+
+## Previous Version Demo (v1.1)
+
+Demo Video: [https://youtu.be/QXQprQBhzHk](https://youtu.be/QXQprQBhzHk)
 
 ## Additional Notes
 
@@ -117,7 +127,7 @@ For a deeper breakdown of how this system works — including input handling, ph
 
 [movement-system-notes.md](movement-system-notes.md)
 
-### Need help customizing or extending this system?
+## Need help customizing or extending this system?
 
 I offer freelance help for Unity and game development:
 [https://www.fiverr.com/lizziejperez](https://www.fiverr.com/lizziejperez)
