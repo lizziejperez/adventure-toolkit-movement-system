@@ -40,19 +40,15 @@ Use this as a foundation for your own projects.
 ## How to Use
 
 1. Open the project in Unity (tested with Unity 6 LTS)
-2. Open the demo scene: `Assets/GridventureToolkit/Movement/Scenes/DemoScene`
-3. Select the player object
-4. Ensure these components are attached:
-    * `Rigidbody2D`
-    * `PlayerInput`
-    * `PlayerMovement`
-5. In the `PlayerInput` component:
-    * Assign the correct Input Actions asset
-    * Set the Default Map to `Player`
-6. Ensure the Input Actions asset contains a `Move` action of type `Value` with control type `Vector2`
-7. Press Play to test movement
-8. Adjust movement speed in the Player Inspector
-9. Toggle Allow Diagonal Movement in the PlayerMovement component if desired
+2. Open the demo scene:
+   `Assets/GridventureToolkit/Movement/Scenes/DemoScene`
+3. Press Play to test movement
+
+### Customize
+
+* Adjust movement speed in the Player Inspector
+* Toggle **Allow Diagonal Movement** in the `PlayerMovement` component
+* Enable **Debug Mode** to log raw movement inputs
 
 ## Input System Reference
 
