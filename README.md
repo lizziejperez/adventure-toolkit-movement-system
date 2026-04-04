@@ -2,8 +2,12 @@
 
 **Current Version:** v2.0
 
+Demo YouTube Video: [https://youtu.be/aoeH75m3Ca8](https://youtu.be/aoeH75m3Ca8)
+
 A reusable, adventure game–inspired 2D top-down movement system built with Unity’s **New Input System**, designed for clarity, flexibility, and easy integration.
+
 Built in Unity with C#, this beginner-friendly system provides clean, responsive 4-direction movement with vertical input priority for precise control, with optional diagonal movement support.
+
 Includes a ready-to-use demo environment with 16x16 pixel art assets and prefabs for quick prototyping and testing.
 
 ## Features
