@@ -48,7 +48,7 @@ Core components:
 
 ## References Used
 
-Primarily referenced the official Unity documentation and class notes.
+Primarily referenced the official Unity documentation and notes.
 
 * Unity 6 LTS Documentation: https://docs.unity3d.com/6000.3/Documentation/Manual/index.html
 * Unity Input System documentation: https://docs.unity3d.com/Packages/com.unity.inputsystem@1.5/manual/Concepts.html
