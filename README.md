@@ -2,7 +2,7 @@
 
 **Current Version:** v2.0
 
-Demo YouTube Video: [https://youtu.be/aoeH75m3Ca8](https://youtu.be/aoeH75m3Ca8)
+Demo Video: [https://youtu.be/aoeH75m3Ca8](https://youtu.be/aoeH75m3Ca8)
 
 A reusable, adventure game–inspired 2D top-down movement system built with Unity’s **New Input System**, designed for clarity, flexibility, and easy integration.
 
